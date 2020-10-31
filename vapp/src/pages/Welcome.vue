@@ -12,8 +12,9 @@
     <ParseContractResult contractName="VoteCollection" method="votingTime" parseValueBy="time" />
 
     <div>
-      <input type="text" placeholder="輸入錢包地址" v-model="address" style="width:200px">
-      <button @click="getVote">取票</button>
+      <input type="text" placeholder="輸入錢包地址" v-model="address" class="addressInput">
+      <b-button @click="getVote">取票</b-button>
+
     </div>
   </div>
 </template>
@@ -22,6 +23,8 @@
 import { mapGetters } from "vuex";
 import { getTicketByAddress } from '@/plugins/api';
 import ParseContractResult from '@/components/ParseContractResult.vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 export default {
   name: "Welcome",
@@ -59,5 +62,8 @@ export default {
 </script>
 
 <style scoped>
-
+.addressInput{
+  width:500px;
+  margin:15px;
+}
 </style>
