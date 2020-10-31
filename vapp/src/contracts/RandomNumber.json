@@ -33,18 +33,18 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"getNumber\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/sera/BlockChain-Voting/contracts/RandomNumber.sol\":\"RandomNumber\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/sera/BlockChain-Voting/contracts/RandomNumber.sol\":{\"keccak256\":\"0xfef7d113c6c57a049c5bbd4320c6d05642667b4c5b845da6ff136c1785903c3a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4b550614031402a2ce7fbfb667ee68b51b07f2648fd55884e68fc12315a7ce34\",\"dweb:/ipfs/QmayNr5DmgU9quqZMNtKp6cWnBdbUtzvBfVmWAUGWx7UfH\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b50600180546001600160a01b0319163317905561002b610033565b600055610058565b6040805142602080830191909152825180830382018152918301909252805191012090565b60be806100666000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c80638da5cb5b146037578063f2c9ecd8146059575b600080fd5b603d6071565b604080516001600160a01b039092168252519081900360200190f35b605f6080565b60408051918252519081900360200190f35b6001546001600160a01b031681565b63499602d29056fea2646970667358221220b70b23888d0b26d40849879304257e4223f233e80084d46280f5e553396f8b3064736f6c63430007040033",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c80638da5cb5b146037578063f2c9ecd8146059575b600080fd5b603d6071565b604080516001600160a01b039092168252519081900360200190f35b605f6080565b60408051918252519081900360200190f35b6001546001600160a01b031681565b63499602d29056fea2646970667358221220b70b23888d0b26d40849879304257e4223f233e80084d46280f5e553396f8b3064736f6c63430007040033",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.4+commit.3f05b770\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"getNumber\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/xillis_wu/Documents/voting-syetem/contracts/RandomNumber.sol\":\"RandomNumber\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/xillis_wu/Documents/voting-syetem/contracts/RandomNumber.sol\":{\"keccak256\":\"0xfef7d113c6c57a049c5bbd4320c6d05642667b4c5b845da6ff136c1785903c3a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4b550614031402a2ce7fbfb667ee68b51b07f2648fd55884e68fc12315a7ce34\",\"dweb:/ipfs/QmayNr5DmgU9quqZMNtKp6cWnBdbUtzvBfVmWAUGWx7UfH\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50600180546001600160a01b0319163317905561002b610033565b600055610058565b6040805142602080830191909152825180830382018152918301909252805191012090565b60be806100666000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c80638da5cb5b146037578063f2c9ecd8146059575b600080fd5b603d6071565b604080516001600160a01b039092168252519081900360200190f35b605f6080565b60408051918252519081900360200190f35b6001546001600160a01b031681565b63499602d29056fea26469706673582212204e3de4323b3d7053a24174096da26f88fc9fd5452d6af858ce476278e132a93f64736f6c63430007040033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c80638da5cb5b146037578063f2c9ecd8146059575b600080fd5b603d6071565b604080516001600160a01b039092168252519081900360200190f35b605f6080565b60408051918252519081900360200190f35b6001546001600160a01b031681565b63499602d29056fea26469706673582212204e3de4323b3d7053a24174096da26f88fc9fd5452d6af858ce476278e132a93f64736f6c63430007040033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
   "sourceMap": "57:372:1:-:0;;;137:76;;;;;;;;;-1:-1:-1;161:5:1;:18;;-1:-1:-1;;;;;;161:18:1;169:10;161:18;;;198:8;:6;:8::i;:::-;189:6;:17;57:372;;219:120;297:33;;;314:15;297:33;;;;;;;;;;;;;;;;;;;;;;;287:44;;;;;219:120;:::o;57:372::-;;;;;;;",
   "deployedSourceMap": "57:372:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;110:20;;;:::i;:::-;;;;-1:-1:-1;;;;;110:20:1;;;;;;;;;;;;;;345:82;;;:::i;:::-;;;;;;;;;;;;;;;;110:20;;;-1:-1:-1;;;;;110:20:1;;:::o;345:82::-;410:10;345:82;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.7.4;\n\ncontract RandomNumber {\n    uint private number;\n    address public owner;\n\n    constructor() {\n        owner = msg.sender;\n        number = random();\n    }\n\n    function random() private view returns (uint) {\n        return uint(keccak256(abi.encodePacked(block.timestamp)));\n    }\n\n    function getNumber() public pure returns (uint) {\n        return 1234567890;\n    }\n}\n",
-  "sourcePath": "/Users/sera/BlockChain-Voting/contracts/RandomNumber.sol",
+  "sourcePath": "/Users/xillis_wu/Documents/voting-syetem/contracts/RandomNumber.sol",
   "ast": {
-    "absolutePath": "/Users/sera/BlockChain-Voting/contracts/RandomNumber.sol",
+    "absolutePath": "/Users/xillis_wu/Documents/voting-syetem/contracts/RandomNumber.sol",
     "exportedSymbols": {
       "RandomNumber": [
         185
@@ -593,7 +593,7 @@
     "src": "32:398:1"
   },
   "legacyAST": {
-    "absolutePath": "/Users/sera/BlockChain-Voting/contracts/RandomNumber.sol",
+    "absolutePath": "/Users/xillis_wu/Documents/voting-syetem/contracts/RandomNumber.sol",
     "exportedSymbols": {
       "RandomNumber": [
         185
@@ -1147,7 +1147,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.1",
-  "updatedAt": "2020-10-31T13:21:52.958Z",
+  "updatedAt": "2020-10-31T14:23:10.879Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

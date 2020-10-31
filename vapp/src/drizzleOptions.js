@@ -1,5 +1,3 @@
-import ComplexStorage from './contracts/ComplexStorage.json'
-import SimpleStorage from './contracts/SimpleStorage.json'
 import VoteCollection from './contracts/VoteCollection.json'
 import VoteProvider from './contracts/VoteProvider.json'
 
@@ -11,9 +9,15 @@ const options = {
       url: 'ws://127.0.0.1:8545'
     }
   },
-  contracts: [ComplexStorage, SimpleStorage, VoteCollection, VoteProvider],
+  contracts: [VoteCollection, VoteProvider],
   events: {
-    SimpleStorage: ['StorageSet']
+    VoteCollection: [
+      'SetTime',
+      'SetCandidate',
+      'SetProvider',
+      'SetPrivateKey',
+      'SetPublicKey',
+    ]
   },
   polls: {
     accounts: 15000

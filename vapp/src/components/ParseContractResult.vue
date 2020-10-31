@@ -75,6 +75,8 @@ export default {
             .map(([key, value]) => ({ key, value: this.mutateValue(value) }))
       }
 
+      this.$emit('onGetValue')
+
       return {
         data: contractData,
         component

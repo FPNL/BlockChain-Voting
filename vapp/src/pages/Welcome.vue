@@ -3,12 +3,13 @@
     歡迎使用投票系統，目前選舉項目為『水果大戰』，
     發起投票者：
     <drizzle-contract contractName="VoteCollection" method="owner"/>
+    <drizzle-contract-form contractName="VoteCollection" method="setTime"/>
 
     <div class="flex-container">
       <drizzle-contract contractName="VoteCollection" method="getCandidates" label="多幾拉摳搜" />
     </div>
 
-    <ParseContractResult contractName="VoteCollection" method="votingTime" parseValueBy="time"/>
+    <ParseContractResult contractName="VoteCollection" method="votingTime" parseValueBy="time" />
 
     <div>
       <input type="text" placeholder="輸入錢包地址" v-model="address" style="width:200px">

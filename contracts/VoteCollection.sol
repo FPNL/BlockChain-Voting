@@ -20,6 +20,12 @@ contract VoteCollection {
         uint expireTime;
     }
 
+    event SetTime(string _message);
+    event SetCandidate(string _message);
+    event SetProvider(string _message);
+    event SetPrivateKey(string _message);
+    event SetPublicKey(string _message);
+
     modifier isOwner() {
         require(isDev || owner == msg.sender,
             "Who are you?"
@@ -70,16 +76,22 @@ contract VoteCollection {
     function setTime(uint _startTime, uint _expireTime) public isOwner isEnableSetting{
         votingTime.startTime = _startTime;
         votingTime.expireTime = _expireTime;
+
+        emit SetTime("Set time success");
     }
 
     //  初始化：加入候選項目;
     function introduceCandidate(string calldata _introduce) public isOwner isBeforeVoting isEnableSetting{
         candidates.push(_introduce);
+
+        emit SetCandidate("Set candidate success");
     }
 
     //  初始化：設置拿票箱地址
     function setVoteProvider(address _provider) public isOwner isBeforeVoting isEnableSetting{
         voteProvider = _provider;
+
+        emit SetProvider("Set provider address success");
     }
 
     //  停止一切初始化設定;
@@ -90,11 +102,15 @@ contract VoteCollection {
     //  設置私鑰;
     function setPrivateKey(string calldata _privateKey) public isOwner isFinishedVoting{
         privateKey = _privateKey;
+
+        emit SetPrivateKey("Set private key success");
     }
 
     //  設置公鑰;
     function setPublicKey(string calldata _publicKey) public isOwner isFinishedVoting{
         publicKey = _publicKey;
+
+        emit SetPublicKey("Set public key success");
     }
 
     //  取得投票項目;
