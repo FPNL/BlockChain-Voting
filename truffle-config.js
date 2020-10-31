@@ -28,7 +28,7 @@ module.exports = {
     goerli: {
       provider() {
         return new HDWalletProvider({
-          privateKeys: ["f6bba3e4459b060dc9c089209e31b4558776429eafd9c47b0912f6b526239ef1"],
+          privateKeys: ["6d7b486a9ce9fc6e58c2215f89b6cccb262d6b3da3bc543fc029359c773d7f7c"],
           // mnemonic: "below swamp muscle hollow afford loud profit artist water clinic egg involve",
           providerOrUrl: "https://goerli.infura.io/v3/e46e0f25c70c4538808c8a1c017aae0f"
 
