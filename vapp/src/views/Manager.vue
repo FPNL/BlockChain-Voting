@@ -1,13 +1,10 @@
 <template>
   <div>
-    <input type="datetime-local" id="meeting-time"
-      name="meeting-time"
-      min="2020-06-07T00:00" max="2030-06-14T00:00"
-      v-model="fromTime">
-    <input type="datetime-local" id="meeting-time"
-      name="meeting-time"
-      min="2020-06-07T00:00" max="2030-06-14T00:00"
-      v-model="toTime">
+      <input type="datetime-local" min="2020-06-07T00:00" max="2030-06-14T00:00"
+        v-model="fromTime">
+      <input type="datetime-local" min="2020-06-07T00:00" max="2030-06-14T00:00"
+        v-model="toTime">
+    <template v-if="timeLoading">Is loading</template>
 
     <button @click.prevent="setVoteTime">設定投票時間</button>
     <br>
@@ -28,8 +25,9 @@ export default {
   components: {},
   data() {
     return {
-       fromTime: "",
-       toTime: "",
+      fromTime: "",
+      toTime: "",
+      timeLoading: false,
     }
   },
   computed: {
@@ -37,15 +35,18 @@ export default {
   },
   methods: {
     setVoteTime() {
+      this.timeLoading = true;
       this.$drizzleEvents.$once('drizzle/contractEvent', (payload) => {
           if(payload.eventName === 'SetTime') {
             alert("操作成功");
+            this.timeLoading = false;
           }
       })
 
       const di = this.drizzleInstance;
       let abi =  di.contracts["VoteCollection"].methods["setTime"];
       abi.cacheSend(Date.parse(this.fromTime), Date.parse(this.toTime));
+
     },
     async uploadPrivateKey(){
       let result = await uploadPrivateKey() ;

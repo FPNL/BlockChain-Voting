@@ -42,6 +42,7 @@ export default {
       for (const value of votingResult) {
         const saltedString = this.decryptData(value);
         const number = saltedString.split('|');
+        console.log(saltedString);
         if(!this.candidates[number[0]]) {
           this.candidates[number[0]] = 1
         } else {

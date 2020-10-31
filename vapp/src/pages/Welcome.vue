@@ -20,7 +20,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { getTicketByAddress } from '@/plugins/api';
-import ParseContractResult from '@/components/ParseContractResult.vue';
+// import ParseContractResult from '@/components/ParseContractResult.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 

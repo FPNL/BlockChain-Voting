@@ -2,6 +2,7 @@
   <div>
     <template v-if="publicKey">
       <CryptoVoting contractName="VoteCollection" method="voteTo" :placeholders="['投票']" :publicKey="publicKey"/>
+      <ParseContractResult contractName="VoteCollection" method="votingTime" parseValueBy="time"></ParseContractResult>
     </template>
 
     <p v-else>
@@ -13,12 +14,14 @@
 
 <script>
 import CryptoVoting from '@/components/CryptoVoting.vue';
+import ParseContractResult from '@/components/ParseContractResult.vue';
 import { getPublicKey } from '@/plugins/api.js';
 
 export default {
   name: "Voting",
   components: {
-    CryptoVoting
+    CryptoVoting,
+    ParseContractResult
   },
   data() {
     return {
