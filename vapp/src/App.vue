@@ -72,19 +72,6 @@
       <div class="flex-container">
         <drizzle-contract contractName="VoteCollection" method="votingTime" />
       </div> -->
-      <!-- 設置時間
-      <drizzle-contract-form
-          contractName="VoteCollection"
-          method="setTime"
-          :placeholders="['開始時間', '結束時間']"
-      />
-
-      設置候選項目
-      <drizzle-contract-form
-          contractName="VoteCollection"
-          method="introduceCandidate"
-          :placeholders="['請介紹項目']"
-      /> -->
 
     <!-- </main> -->
   </div>
@@ -123,7 +110,7 @@ export default {
   computed: {
     ...mapGetters('accounts', ['activeAccount', 'activeBalance']),
     ...mapGetters('drizzle', ['drizzleInstance', 'isDrizzleInitialized']),
-    ...mapGetters('contracts', ['getContractData','vote'])
+    ...mapGetters('contracts', ['getContractData'])
     // getCandidates() {
     //   return this.getContractData({
     //     contract: 'VoteCollection',
