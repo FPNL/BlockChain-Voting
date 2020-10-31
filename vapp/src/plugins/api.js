@@ -14,8 +14,7 @@ async function getPrivateKey() {
 
 async function getPublicKey() {
 	const result = await axios.get('api/get-public-key')
-
-	return result.data.ret.txn_hash;
+	return result.data.ret.rsa_public_key;
 	// {
 	// 	result: 'ok',
 	// 	ret: {

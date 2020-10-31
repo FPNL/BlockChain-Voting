@@ -11,7 +11,7 @@
     <ParseContractResult contractName="VoteCollection" method="votingTime" parseValueBy="time"/>
 
     <div>
-      <input type="text" placeholder="輸入錢包地址" v-model="address">
+      <input type="text" placeholder="輸入錢包地址" v-model="address" style="width:200px">
       <button @click="getVote">取票</button>
     </div>
   </div>
