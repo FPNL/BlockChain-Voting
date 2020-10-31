@@ -17,18 +17,24 @@
 
 
       </b-tab>
-<!--
+
     <b-tab title="投票囉">
       <input v-model="address" placeholder="請輸入Address">
       <div style="margin:20px"></div>
-
+<!--
         <button  @click="chose1()" :class="{active : show1}">1 號</button>
         <span style="margin-right:10px"></span>
-        <button  @click="chose2()" :class="{active : show2}">2 號</button>
-        <button style="margin:20px ;background-color: #97CBFF" @click="choice">確認投票</button>
+        <button  @click="chose2()" :class="{active : show2}">2 號</button> -->
+        <input type="radio" id="one" value=1 v-model="picked" style="margin:20px">
+        <label for="one">One</label>
+        <!-- <br> -->
+        <input type="radio" id="two" value=2 v-model="picked" style="margin:20px">
+        <label for="two">Two</label>
+
+        <button style="margin:20px ;background-color: #97CBFF" @click="vote">確認投票</button>
     </b-tab>
 
-    <b-tab title="投票結果" >
+    <!-- <b-tab title="投票結果" >
       <div class="result">
         <span>1號</span><br><br><br>
         <span class="ticket">200票</span>
@@ -109,13 +115,15 @@ export default {
     return {
       units: 'Ether', //Wei
       precision: 5,
-      address:""
+      address:"",
+      rand:0,
+      picked:1
     }
   },
   computed: {
     ...mapGetters('accounts', ['activeAccount', 'activeBalance']),
     ...mapGetters('drizzle', ['drizzleInstance', 'isDrizzleInitialized']),
-    ...mapGetters('contracts', ['getContractData'])
+    ...mapGetters('contracts', ['getContractData','vote'])
     // getCandidates() {
     //   return this.getContractData({
     //     contract: 'VoteCollection',
@@ -178,6 +186,15 @@ export default {
       //     // console.log('请求失败处理');
       //   });
     },
+    //投票鈕
+    vote(){
+      // alert(this.picked)
+      this.rand= this.picked+'-'+Math.floor(Math.random()*98)+1;
+      console.log(this.rand)
+      var encryRand = this.encryptedData('MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCYQBRFj+2Ryl6kkjLy+tZJT3YsaenURtPUexuWlY595LnQTNunSBtwNcJ7gLZgbkb4Bf2IIkCYgya6t+B9LjdPJ7NBGCIc7TQmTpKjcFucsA+tVuOesaYFBVF/HrL+1lNEY14oq+r7+l/BgUuVUBDUE4r7nfgPjMijSfLNLpP8+wIDAQAB',this.rand)
+      console.log(encryRand)
+
+    }
   }
 }
 </script>
