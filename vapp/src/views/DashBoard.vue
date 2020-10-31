@@ -5,8 +5,13 @@
 </template>
 
 <script>
+import { getPrivateKey } from '@/plugins/api';
+
 export default {
-  name: "DashBoard"
+  name: "DashBoard",
+  methods: {
+    getPrivateKey
+  }
 }
 </script>
 

@@ -1,9 +1,9 @@
 <template>
   <main>
     <ul>
-      <li><router-link :to="{ name: '@index'}">index</router-link></li>
-      <li><router-link :to="{ name: '@votingPage'}">votingPage</router-link></li>
-      <li><router-link :to="{ name: '@end'}">index</router-link></li>
+      <li><router-link :to="{ name: '@index'}">首頁</router-link></li>
+      <li><router-link :to="{ name: '@votingPage'}">投票頁</router-link></li>
+      <li><router-link :to="{ name: '@end'}">結果頁面</router-link></li>
     </ul>
 
     <router-view />
@@ -25,5 +25,12 @@ main {
   color: #2c3e50;
   margin-top: 60px;
   height: calc(100vh - 140px);
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 </style>

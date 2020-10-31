@@ -3801,12 +3801,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xAF0bb5305bFCbd5fD26955cC47F7803cA8c0061C",
-      "transactionHash": "0xbf17e76a0c082c4f45dd486a2d7ff9a898c3d5bc11304fbcf6f50767f6dbd83b"
+      "address": "0x74fe04DFb6e54e907b3e221BbF91687ab58846d2",
+      "transactionHash": "0x24bc87ee3a452c6af91ab7eb1b6e662c7882639adb7991984faa743c87c23b3f"
     }
   },
   "schemaVersion": "3.3.1",
-  "updatedAt": "2020-10-31T09:41:34.043Z",
+  "updatedAt": "2020-10-31T12:08:03.051Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

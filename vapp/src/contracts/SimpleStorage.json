@@ -634,12 +634,12 @@
         }
       },
       "links": {},
-      "address": "0x2Dac08c92E4126a14101A8aF39817dD6aFec5842",
-      "transactionHash": "0x0a7e36b0c570c0367b4dd2a8177f1166182bee0a24e517fb9646ab0f03ae537a"
+      "address": "0xE4fe0B422Db757842FB280070635D82372e8626F",
+      "transactionHash": "0x8430d40dbdc2c7aa0dcf22adcde153b4a696798b02e55592be7ff2daaa1959b7"
     }
   },
   "schemaVersion": "3.3.1",
-  "updatedAt": "2020-10-31T09:41:34.041Z",
+  "updatedAt": "2020-10-31T12:08:03.048Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

@@ -34,7 +34,12 @@ export default {
     methodArgs: {
       type: Array,
       default: () => []
-    }
+    },
+    parseValueBy: {
+      type: String,
+      default: 'decrypt'
+    },
+    privateKey: String
   },
 
   components: {
@@ -67,7 +72,7 @@ export default {
         // Todo: document in => out example to explain this transformation
         contractData = Object.entries(contractData)
             .filter(([key]) => /^\D/.test(key))
-            .map(([key, value]) => ({ key, value: this.decryptData(value) }))
+            .map(([key, value]) => ({ key, value: this.mutateValue(value) }))
       }
 
       return {
@@ -77,11 +82,24 @@ export default {
     }
   },
   methods: {
-    decryptData(privateKey, data) {
+    mutateValue(data) {
+      switch (this.parseValueBy) {
+        case 'time':
+          return this.decryptData(data);
+        case 'crypto':
+        default:
+          return this.decryptData(data);
+      }
+    },
+    parseTime(timestamp) {
+      const dateObj = new Date(timestamp)
+      return dateObj.toString();
+    },
+    decryptData(data) {
       // 新建JSEncrypt对象
       let decrypt = new jsencrypt();
       // 设置私钥
-      decrypt.setPrivateKey(privateKey);
+      decrypt.setPrivateKey(this.privateKey);
       // 解密数据
       return decrypt.decrypt(data);
     }

@@ -6,11 +6,13 @@ import "./VoteProvider.sol";
 
 contract VoteCollection {
     string public privateKey;
+    string public publicKey;
     string[] public candidates;
     string[] public stronghold;
     address immutable public owner = msg.sender;
     address public voteProvider;
     bool public isSettingFinish;
+    bool public isDev;
     VoteTime public votingTime;
 
     struct VoteTime {
@@ -19,50 +21,38 @@ contract VoteCollection {
     }
 
     modifier isOwner() {
-        require(
-        true
-//            owner == msg.sender, "Who are you?"
+        require(isDev || owner == msg.sender,
+            "Who are you?"
         );
         _;
     }
 
     modifier isEnableSetting() {
-        require(
-            true
-//            !isSettingFinish, "Can't setting anymore."
+        require(isDev || !isSettingFinish,
+            "Can't setting anymore."
         );
         _;
     }
 
     modifier isBeforeVoting() {
-        require(
-            true
-//            block.timestamp < votingTime.startTime, "Voting is not yet."
+        require(isDev || block.timestamp < votingTime.startTime,
+            "Voting is not yet."
         );
         _;
     }
 
     modifier isVotingTime() {
-        require(
-            true
-//            votingTime.startTime <= block.timestamp && block.timestamp <= votingTime.expireTime,
-//            "Not voting Time!"
+        require(isDev || votingTime.startTime <= block.timestamp && block.timestamp <= votingTime.expireTime,
+            "Not voting Time!"
         );
         _;
     }
 
     modifier isFinishedVoting() {
-        require(
-            true
-//            block.timestamp > votingTime.expireTime && keccak256(bytes(privateKey)) == keccak256(bytes("")),
-//            "Voting is end."
+        require(isDev || block.timestamp > votingTime.expireTime && keccak256(bytes(privateKey)) == keccak256(bytes("")),
+            "Voting is end."
         );
         _;
-    }
-
-   // 終止投票
-   function stopVoting() public isOwner isVotingTime {
-        votingTime.expireTime = block.timestamp;
     }
 
     // 正式投票;
@@ -102,6 +92,11 @@ contract VoteCollection {
         privateKey = _privateKey;
     }
 
+    //  設置公鑰;
+    function setPublicKey(string calldata _publicKey) public isOwner isFinishedVoting{
+        publicKey = _publicKey;
+    }
+
     //  取得投票項目;
     function getCandidates() public view returns(string[] memory) {
         return candidates;
@@ -110,5 +105,17 @@ contract VoteCollection {
     // 取得選票結果;
     function getVoteResult() public view isFinishedVoting returns (string[] memory){
         return stronghold;
+    }
+
+    /* 開發者模式 */
+
+    // 終止投票
+    function stopVoting() public isOwner isVotingTime {
+        votingTime.expireTime = block.timestamp;
+    }
+
+    // 啟動開發者模式
+    function SPECIAL_TIME() public isOwner {
+        isDev = true;
     }
 }

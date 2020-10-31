@@ -1,6 +1,6 @@
 <template>
 <div>
-  <DecryptResult contractName="VoteCollection" method="getVoteResult" label="公佈答案！" />
+  <DecryptResult contractName="VoteCollection" method="getVoteResult" label="公佈答案！" parseValueBy="crypto"/>
 </div>
 </template>
 
