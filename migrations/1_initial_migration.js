@@ -1,7 +1,7 @@
-const SimpleStorage = artifacts.require("SimpleStorage");
-const ComplexStorage = artifacts.require("ComplexStorage");
+const VoteCollection = artifacts.require("VoteCollection");
+const VoteProvider = artifacts.require("VoteProvider");
 
 module.exports = function(deployer) {
-  deployer.deploy(SimpleStorage);
-  deployer.deploy(ComplexStorage);
+  deployer.deploy(VoteCollection);
+  deployer.deploy(VoteProvider);
 };

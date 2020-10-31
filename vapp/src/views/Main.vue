@@ -24,7 +24,7 @@ main {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 205px);
 }
 
 ul {

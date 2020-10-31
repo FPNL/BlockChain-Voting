@@ -88,7 +88,7 @@ contract VoteCollection {
     }
 
     //  初始化：設置拿票箱地址
-    function setVoteProvider(address _provider) public isOwner isBeforeVoting isEnableSetting{
+    function setVoteProvider(address _provider) public isOwner isEnableSetting{
         voteProvider = _provider;
 
         emit SetProvider("Set provider address success");

@@ -8,6 +8,7 @@
       name="meeting-time"
       min="2020-06-07T00:00" max="2030-06-14T00:00"
       v-model="toTime">
+
     <button @click.prevent="setVoteTime">設定投票時間</button>
     <br>
     <br>

@@ -9,8 +9,6 @@
       <!-- <drizzle-contract contractName="VoteCollection" method="getCandidates" label="多幾拉摳搜" /> -->
     </div>
 
-    <ParseContractResult contractName="VoteCollection" method="votingTime" parseValueBy="time" />
-
     <div>
       <input type="text" placeholder="輸入錢包地址" v-model="address" class="addressInput">
       <b-button @click="getVote">取票</b-button>
@@ -28,9 +26,6 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 export default {
   name: "Welcome",
-  components: {
-    ParseContractResult
-  },
   data() {
     return {
       address: ''

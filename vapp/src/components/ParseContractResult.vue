@@ -7,7 +7,6 @@ import { mapGetters } from 'vuex'
 import ContractData from './presentational/Data'
 import ContractArrayData from './presentational/ArrayData'
 import ContractObjectData from './presentational/ObjectData'
-import jsencrypt from 'jsencrypt'
 
 export default {
   props: {
@@ -72,10 +71,13 @@ export default {
         // Todo: document in => out example to explain this transformation
         contractData = Object.entries(contractData)
             .filter(([key]) => /^\D/.test(key))
-            .map(([key, value]) => ({ key, value: this.mutateValue(value) }))
+            .map(([key, value]) => {
+              return ({ key, value: this.mutateValue(value) });
+            });
       }
-
-      this.$emit('onGetValue')
+      if(this.parseValueBy === 'crypto' && contractData !== "loading") {
+        this.$emit('onFinishVoting', contractData)
+      }
 
       return {
         data: contractData,
@@ -87,10 +89,8 @@ export default {
     mutateValue(data) {
       switch (this.parseValueBy) {
         case 'time':
-          return this.parseTime(data);
-        case 'crypto':
         default:
-          return this.decryptData(data);
+          return this.parseTime(data);
       }
     },
     parseTime(timestamp) {
@@ -121,14 +121,6 @@ export default {
         return "尚未設置時間"
       }
     },
-    decryptData(data) {
-      // 新建JSEncrypt对象
-      let decrypt = new jsencrypt();
-      // 设置私钥
-      decrypt.setPrivateKey(this.privateKey);
-      // 解密数据
-      return decrypt.decrypt(data);
-    }
   },
   created() {
     const { contractName, method, methodArgs } = this
