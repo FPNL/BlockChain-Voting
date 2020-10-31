@@ -5,8 +5,12 @@ import ManagerView from '@/views/Manager.vue';
 import Welcome from '@/pages/Welcome.vue';
 import Voting from '@/pages/Voting.vue';
 import End from '@/pages/End.vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
 
 Vue.use(Router);
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 
 export const initRoutes = [
 	{

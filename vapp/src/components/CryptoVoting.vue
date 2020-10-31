@@ -1,13 +1,21 @@
 <template>
   <form v-if="isDrizzleInitialized">
-    <input
+    <!-- <input
         v-for="(param, i) in displayInputs"
         v-model="ethData[i]"
         :key="i"
         :type="param.type"
         :placeholder="param.name"
-    />
-    <button @click.prevent="onSubmit">Submit</button>
+    /> -->
+    <b-form-group label="投票人選">
+      <b-form-radio v-model="ethData[1]" name="some-radios" value="1">Niji</b-form-radio>
+      <b-form-radio v-model="ethData[2]" name="some-radios" value="2">Amber</b-form-radio>
+      <b-form-radio v-model="ethData[3]" name="some-radios" value="3">Budda</b-form-radio>
+      <b-form-radio v-model="ethData[4]" name="some-radios" value="4">Xillis</b-form-radio>
+      <b-form-radio v-model="ethData[5]" name="some-radios" value="5">Sera</b-form-radio>
+
+    </b-form-group>
+    <b-button @click.prevent="onSubmit">Submit</b-button>
   </form>
 </template>
 
