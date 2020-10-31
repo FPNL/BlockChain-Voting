@@ -19,32 +19,43 @@ contract VoteCollection {
     }
 
     modifier isOwner() {
-        require(owner == msg.sender, "Who are you?");
+        require(
+        true
+//            owner == msg.sender, "Who are you?"
+        );
         _;
     }
 
     modifier isEnableSetting() {
-        require(!isSettingFinish, "Can't setting anymore.");
+        require(
+            true
+//            !isSettingFinish, "Can't setting anymore."
+        );
         _;
     }
 
     modifier isBeforeVoting() {
-        require(block.timestamp < votingTime.startTime, "Voting is not yet.");
+        require(
+            true
+//            block.timestamp < votingTime.startTime, "Voting is not yet."
+        );
         _;
     }
 
     modifier isVotingTime() {
         require(
-            votingTime.startTime <= block.timestamp && block.timestamp <= votingTime.expireTime,
-            "Not voting Time!"
+            true
+//            votingTime.startTime <= block.timestamp && block.timestamp <= votingTime.expireTime,
+//            "Not voting Time!"
         );
         _;
     }
 
     modifier isFinishedVoting() {
         require(
-            block.timestamp > votingTime.expireTime && keccak256(bytes(privateKey)) == keccak256(bytes("")),
-            "Voting is end."
+            true
+//            block.timestamp > votingTime.expireTime && keccak256(bytes(privateKey)) == keccak256(bytes("")),
+//            "Voting is end."
         );
         _;
     }
@@ -53,7 +64,7 @@ contract VoteCollection {
    function stopVoting() public isOwner isVotingTime {
         votingTime.expireTime = block.timestamp;
     }
-    
+
     // 正式投票;
     function voteTo(string calldata data) public isVotingTime returns (bool) {
         VoteProvider vote = VoteProvider(voteProvider);
@@ -61,7 +72,7 @@ contract VoteCollection {
         require(success, "Recycle vote Fail");
 
         stronghold.push(data);
-        
+
         return success;
     }
 

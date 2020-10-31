@@ -21,23 +21,27 @@ module.exports = {
   },
   networks: {
     development: {
+      // provider() {
+      //   return new HDWalletProvider({
+      //     privateKeys: ["6d7b486a9ce9fc6e58c2215f89b6cccb262d6b3da3bc543fc029359c773d7f7c"],
+      //     providerOrUrl: "http://127.0.0.1:8545"
+      //   });
+      // },
+      gasPrice: 1000000000,
+      skipDryRun: true,
+      network_id: "5777", // Match any network id
       host: "127.0.0.1",
-      port: 9545,
-      network_id: "*" // Match any network id
+      port: 8545,
     },
     goerli: {
       provider() {
         return new HDWalletProvider({
           privateKeys: ["6d7b486a9ce9fc6e58c2215f89b6cccb262d6b3da3bc543fc029359c773d7f7c"],
-          // mnemonic: "below swamp muscle hollow afford loud profit artist water clinic egg involve",
           providerOrUrl: "https://goerli.infura.io/v3/e46e0f25c70c4538808c8a1c017aae0f"
-
-          // providerOrUrl: "https://ropsten.infura.io/v3/e46e0f25c70c4538808c8a1c017aae0f"
         });
       },
       gasPrice: 1000000000,
       skipDryRun: true,
-      // network_id: 3,
       network_id: '5',
     }
   }

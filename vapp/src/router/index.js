@@ -1,28 +1,43 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import Main from '@/views/Main.vue';
+import DashBoard from '@/views/DashBoard.vue';
+import Welcome from '@/pages/Welcome.vue';
+import Voting from '@/pages/Voting.vue';
+import End from '@/pages/End.vue';
 
 Vue.use(Router);
 
-// const appTpl = () => import('@/views/tpl/AppTpl.vue');
-
 export const initRoutes = [
-    {
-    path: '/getVote',
-    name: 'getVote',
-    component: () => import('@/views/GetVote.vue'),
-},
-{
-    path: '/vote',
-    name: 'vote',
-    component: () => import('@/views/Vote.vue'),
-},
-{
-    path: '/voteResult',
-    name: 'voteResult',
-    component: () => import('@/views/VoteResult.vue'),
-}
+	{
+		path: '/',
+		name: '@main',
+		component: Main,
+        children: [
+            {
+                path: '',
+                name: '@index',
+                component: Welcome,
+            },
+            {
+                path: 'voting',
+                name: '@votingPage',
+                component: Voting
+            },
+            {
+                path: 'end',
+                name: '@end',
+                component: End
+            }
+        ]
+	},
+	{
+		path: '/dashboard',
+		name: '@dashboard',
+		component: DashBoard
+	}
 ]
 const router = new Router({
-    routes: initRoutes
+	routes: initRoutes
 });
 export default router;
