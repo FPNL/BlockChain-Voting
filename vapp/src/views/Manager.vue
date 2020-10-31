@@ -42,11 +42,10 @@ export default {
             this.timeLoading = false;
           }
       })
-
+      console.log(Math.floor(Date.parse(this.fromTime) / 1000))
       const di = this.drizzleInstance;
       let abi =  di.contracts["VoteCollection"].methods["setTime"];
-      abi.cacheSend(Date.parse(this.fromTime), Date.parse(this.toTime));
-
+      abi.cacheSend(Math.floor(Date.parse(this.fromTime) / 1000), Math.floor(Date.parse(this.toTime) / 1000));
     },
     async uploadPrivateKey(){
       let result = await uploadPrivateKey() ;

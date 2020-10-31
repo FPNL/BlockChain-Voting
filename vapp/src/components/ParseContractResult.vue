@@ -76,6 +76,7 @@ export default {
             });
       }
       if(this.parseValueBy === 'crypto' && contractData !== "loading") {
+        console.log(79)
         this.$emit('onFinishVoting', contractData)
       }
 
@@ -96,9 +97,8 @@ export default {
     parseTime(timestamp) {
       if(timestamp != 0) {
 
-        const dateObj = new Date(Number(timestamp))
+        const dateObj = new Date(Number(timestamp * 1000))
 
-        console.log(typeof(dateObj));
         // console.log(Date(parseInt(dateObj) * 1000).toLocaleString().replace(/:\d{1,2}$/,' '));
         var x1=dateObj.getFullYear().toString();
         var x2=(dateObj.getMonth()+1).toString();

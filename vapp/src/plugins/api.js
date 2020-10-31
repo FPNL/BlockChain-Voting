@@ -3,7 +3,7 @@ import axios from './axios';
 async function getPrivateKey() {
 	const result = await axios.get('api/get-private-key');
 
-	return result.data.ret.txn_hash;
+	return result.data.ret.rsa_private_key;
 	// {
 	// 	result: 'ok',
 	// 	ret:{

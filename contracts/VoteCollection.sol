@@ -55,8 +55,15 @@ contract VoteCollection {
     }
 
     modifier isFinishedVoting() {
-        require(isDev || block.timestamp > votingTime.expireTime && keccak256(bytes(privateKey)) == keccak256(bytes("")),
+        require(isDev || block.timestamp > votingTime.expireTime,
             "Voting is end."
+        );
+        _;
+    }
+
+    modifier hasFillInWithPrivateKey() {
+        require(isDev || keccak256(bytes(privateKey)) != keccak256(bytes("")),
+            "Should fill in with Private Key!"
         );
         _;
     }
@@ -119,7 +126,7 @@ contract VoteCollection {
     }
 
     // 取得選票結果;
-    function getVoteResult() public view isFinishedVoting returns (string[] memory){
+    function getVoteResult() public view isFinishedVoting hasFillInWithPrivateKey returns (string[] memory){
         return stronghold;
     }
 
