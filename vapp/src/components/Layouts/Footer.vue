@@ -2,6 +2,8 @@
   <div>
     <span>開發者模式</span>
     <drizzle-contract-form contractName="VoteCollection" method="SPECIAL_TIME" label="開發者模式"></drizzle-contract-form>
+    <span>停止投票</span>
+    <drizzle-contract-form contractName="VoteCollection" method="stopVoting" label="停止投票"></drizzle-contract-form>
   </div>
 </template>
 

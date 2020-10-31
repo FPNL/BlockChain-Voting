@@ -8,7 +8,7 @@
       <drizzle-contract contractName="VoteCollection" method="getCandidates" label="多幾拉摳搜" />
     </div>
 
-    <DecryptResult contractName="VoteCollection" method="votingTime" parseValueBy="time"/>
+    <ParseContractResult contractName="VoteCollection" method="votingTime" parseValueBy="time"/>
 
     <div>
       <input type="text" placeholder="輸入錢包地址" v-model="address">
@@ -19,13 +19,13 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { postAddress } from '@/plugins/api';
-import DecryptResult from '@/components/DecryptResult.vue';
+import { getTicketByAddress } from '@/plugins/api';
+import ParseContractResult from '@/components/ParseContractResult.vue';
 
 export default {
   name: "Welcome",
   components: {
-    DecryptResult
+    ParseContractResult
   },
   data() {
     return {
@@ -44,7 +44,7 @@ export default {
   methods: {
     async getVote() {
       try {
-        const transId = await postAddress(this.address);
+        const transId = await getTicketByAddress(this.address);
         alert(`取票成功
           transaction hash id: ${transId}`
         )

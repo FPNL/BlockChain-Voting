@@ -1,7 +1,7 @@
 <template>
-<div>
-  DashBoard
-</div>
+  <div>
+    DashBoard
+  </div>
 </template>
 
 <script>

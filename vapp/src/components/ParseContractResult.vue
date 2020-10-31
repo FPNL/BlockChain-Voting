@@ -85,15 +85,19 @@ export default {
     mutateValue(data) {
       switch (this.parseValueBy) {
         case 'time':
-          return this.decryptData(data);
+          return this.parseTime(data);
         case 'crypto':
         default:
           return this.decryptData(data);
       }
     },
     parseTime(timestamp) {
-      const dateObj = new Date(timestamp)
-      return dateObj.toString();
+      if(timestamp != 0) {
+        const dateObj = new Date(timestamp)
+        return dateObj.toString();
+      } else{
+        return "尚未設置時間"
+      }
     },
     decryptData(data) {
       // 新建JSEncrypt对象

@@ -24,7 +24,7 @@ async function getPublicKey() {
 	// }
 }
 
-async function postAddress(address) {
+async function getTicketByAddress(address) {
 	const result = await axios.post('api/give-vote', {
 		to_address: address
 	});
@@ -38,4 +38,4 @@ async function postAddress(address) {
 	// }
 }
 
-export { postAddress, getPrivateKey, getPublicKey };
+export { getTicketByAddress, getPrivateKey, getPublicKey };

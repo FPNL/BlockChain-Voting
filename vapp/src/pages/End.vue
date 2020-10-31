@@ -1,15 +1,26 @@
 <template>
-<div>
-  <DecryptResult contractName="VoteCollection" method="getVoteResult" label="公佈答案！" parseValueBy="crypto"/>
-</div>
+  <div>
+    <ParseContractResult contractName="VoteCollection" method="getVoteResult" label="公佈答案！"
+        parseValueBy="crypto" :privateKey="privateKey"/>
+  </div>
 </template>
 
 <script>
-import DecryptResult from "@/components/DecryptResult";
+import ParseContractResult from "@/components/ParseContractResult";
+import { getPrivateKey } from '@/plugins/api';
+
 export default {
   name: "End",
   components: {
-    DecryptResult
+    ParseContractResult
+  },
+  data() {
+    return {
+      privateKey: '',
+    }
+  },
+  async mounted() {
+    this.privateKey = await getPrivateKey()
   }
 }
 </script>
