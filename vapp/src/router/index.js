@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Main from '@/views/Main.vue';
-import DashBoard from '@/views/DashBoard.vue';
+import ManagerView from '@/views/Manager.vue';
 import Welcome from '@/pages/Welcome.vue';
 import Voting from '@/pages/Voting.vue';
 import End from '@/pages/End.vue';
@@ -32,9 +32,9 @@ export const initRoutes = [
         ]
 	},
 	{
-		path: '/dashboard',
-		name: '@dashboard',
-		component: DashBoard
+		path: '/manager',
+		name: '@manager',
+		component: ManagerView
 	}
 ]
 const router = new Router({
