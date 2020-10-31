@@ -2,6 +2,8 @@
 pragma solidity ^0.7.4;
 pragma experimental ABIEncoderV2;
 
+import "./VoteProvider.sol";
+
 contract VoteCollection {
     string public privateKey;
     string[] public candidates;
@@ -47,15 +49,20 @@ contract VoteCollection {
         _;
     }
 
+   // 終止投票
+   function stopVoting() public isOwner isVotingTime {
+        votingTime.expireTime = block.timestamp;
+    }
+    
     // 正式投票;
-    function voteTo(string calldata data) public isVotingTime returns (bytes memory) {
-        bytes memory payload = abi.encodeWithSignature("recycleVote(address)", msg.sender);
-        (bool success, bytes memory returnData) = voteProvider.delegatecall(payload);
-
-        require(success);
+    function voteTo(string calldata data) public isVotingTime returns (bool) {
+        VoteProvider vote = VoteProvider(voteProvider);
+        bool success = vote.recycleVote(msg.sender);
+        require(success, "Recycle vote Fail");
 
         stronghold.push(data);
-        return returnData;
+        
+        return success;
     }
 
     //  初始化：設置投票時間;
