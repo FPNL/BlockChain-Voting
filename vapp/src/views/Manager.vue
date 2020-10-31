@@ -30,9 +30,15 @@ export default {
   },
   methods: {
     setVoteTime() {
+      this.$drizzleEvents.$once('drizzle/contractEvent', (payload) => {
+          if(payload.eventName === 'SetTime') {
+            alert("操作成功");
+          }
+      })
+
       const di = this.drizzleInstance;
       let abi =  di.contracts["VoteCollection"].methods["setTime"];
-      console.log( abi.cacheSend(Date.parse(this.fromTime), Date.parse(this.toTime)));
+      abi.cacheSend(Date.parse(this.fromTime), Date.parse(this.toTime));
     },
   }
 }
