@@ -1,8 +1,6 @@
-// SPDX-License-Identifier: MIT
 pragma solidity ^0.7.4;
-/**
- *Submitted for verification at Etherscan.io on 2020-10-30
-*/
+
+// SPDX-License-Identifier: MIT
 
 /*
  * Token was generated for FREE at https://vittominacori.github.io/erc20-generator/
@@ -266,7 +264,7 @@ library Address {
      * _Available since v3.1._
      */
     function functionCall(address target, bytes memory data) internal returns (bytes memory) {
-        return functionCall(target, data, "Address: low-level call failed");
+      return functionCall(target, data, "Address: low-level call failed");
     }
 
     /**
@@ -360,7 +358,7 @@ pragma solidity ^0.7.0;
 contract VoteProvider {
     using SafeMath for uint256;
     using Address for address;
-
+    
     address public owner;
     address public voteBox;
 
@@ -381,45 +379,51 @@ contract VoteProvider {
     }
 
     modifier onlyAllower {
-        require(msg.sender == owner || msg.sender == voteBox);
+        require(msg.sender == owner || msg.sender == voteBox, "You don't have permission");
         _;
     }
-
-    function setVoteBox(address account) public onlyAllower returns (bool) {
+    
+    // 設定投票箱合約位址
+    function setVoteCollection(address account) public onlyAllower returns (bool) {
         require(voteBox == address(0x0), "Already has voteBox");
         voteBox = account;
         return true;
     }
 
+    // 設定投票數
     function votedCounts() public view returns (uint256) {
         return _votes[owner];
     }
 
+    // 發送選票
     function giveVote(address recipient) public onlyAllower returns (bool) {
         require(alreadyGotVote(recipient) == false, "Already got vote");
         require(recipient != address(0), "recipient to the zero address");
-
+        
         _votes[recipient] = _votes[recipient].add(1);
         _alreadyGotVotes[recipient] = true;
-
+        
         return true;
     }
-
+    
+    // 回收選票
     function recycleVote(address account) public onlyAllower returns (bool) {
         _votes[account] = _votes[account].sub(1, "You don't have vote");
         _votes[owner] = _votes[owner].add(1);
-
+        
         return true;
     }
-
+    
+    // 是否取得選票
     function alreadyGotVote(address account) public view returns(bool) {
         return _alreadyGotVotes[account];
     }
-
+    
+    // 是否投票
     function isVoted(address account) public view returns(bool) {
         return _votes[account] == 0 && alreadyGotVote(account);
     }
-
+    
     function _msgSender() internal view returns (address payable) {
         return msg.sender;
     }
@@ -549,16 +553,16 @@ library EnumerableSet {
         return set._values.length;
     }
 
-    /**
-     * @dev Returns the value stored at position `index` in the set. O(1).
-     *
-     * Note that there are no guarantees on the ordering of values inside the
-     * array, and it may change when more values are added or removed.
-     *
-     * Requirements:
-     *
-     * - `index` must be strictly less than {length}.
-     */
+   /**
+    * @dev Returns the value stored at position `index` in the set. O(1).
+    *
+    * Note that there are no guarantees on the ordering of values inside the
+    * array, and it may change when more values are added or removed.
+    *
+    * Requirements:
+    *
+    * - `index` must be strictly less than {length}.
+    */
     function _at(Set storage set, uint256 index) private view returns (bytes32) {
         require(set._values.length > index, "EnumerableSet: index out of bounds");
         return set._values[index];
@@ -604,16 +608,16 @@ library EnumerableSet {
         return _length(set._inner);
     }
 
-    /**
-     * @dev Returns the value stored at position `index` in the set. O(1).
-     *
-     * Note that there are no guarantees on the ordering of values inside the
-     * array, and it may change when more values are added or removed.
-     *
-     * Requirements:
-     *
-     * - `index` must be strictly less than {length}.
-     */
+   /**
+    * @dev Returns the value stored at position `index` in the set. O(1).
+    *
+    * Note that there are no guarantees on the ordering of values inside the
+    * array, and it may change when more values are added or removed.
+    *
+    * Requirements:
+    *
+    * - `index` must be strictly less than {length}.
+    */
     function at(AddressSet storage set, uint256 index) internal view returns (address) {
         return address(uint256(_at(set._inner, index)));
     }
@@ -659,16 +663,16 @@ library EnumerableSet {
         return _length(set._inner);
     }
 
-    /**
-     * @dev Returns the value stored at position `index` in the set. O(1).
-     *
-     * Note that there are no guarantees on the ordering of values inside the
-     * array, and it may change when more values are added or removed.
-     *
-     * Requirements:
-     *
-     * - `index` must be strictly less than {length}.
-     */
+   /**
+    * @dev Returns the value stored at position `index` in the set. O(1).
+    *
+    * Note that there are no guarantees on the ordering of values inside the
+    * array, and it may change when more values are added or removed.
+    *
+    * Requirements:
+    *
+    * - `index` must be strictly less than {length}.
+    */
     function at(UintSet storage set, uint256 index) internal view returns (uint256) {
         return uint256(_at(set._inner, index));
     }
