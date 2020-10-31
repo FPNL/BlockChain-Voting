@@ -409,7 +409,6 @@ contract VoteProvider {
     // 回收選票
     function recycleVote(address account) public onlyAllower returns (bool) {
         _votes[account] = _votes[account].sub(1, "You don't have vote");
-        _votes[owner] = _votes[owner].add(1);
         
         return true;
     }
