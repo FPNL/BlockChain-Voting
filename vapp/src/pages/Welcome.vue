@@ -1,12 +1,12 @@
 <template>
   <div>
-    歡迎使用投票系統，目前選舉項目為『水果大戰』，
-    發起投票者：
-    <drizzle-contract contractName="VoteCollection" method="owner"/>
-    <drizzle-contract-form contractName="VoteCollection" method="setTime"/>
+    歡迎使用投票系統，
+
+    發起投票者<drizzle-contract contractName="VoteCollection" method="owner"/>
+    <!-- <drizzle-contract-form contractName="VoteCollection" method="setTime"/> -->
 
     <div class="flex-container">
-      <drizzle-contract contractName="VoteCollection" method="getCandidates" label="多幾拉摳搜" />
+      <!-- <drizzle-contract contractName="VoteCollection" method="getCandidates" label="多幾拉摳搜" /> -->
     </div>
 
     <ParseContractResult contractName="VoteCollection" method="votingTime" parseValueBy="time" />

@@ -95,8 +95,28 @@ export default {
     },
     parseTime(timestamp) {
       if(timestamp != 0) {
-        const dateObj = new Date(timestamp)
-        return dateObj.toString();
+
+        const dateObj = new Date(Number(timestamp))
+
+        console.log(typeof(dateObj));
+        // console.log(Date(parseInt(dateObj) * 1000).toLocaleString().replace(/:\d{1,2}$/,' '));
+        var x1=dateObj.getFullYear().toString();
+        var x2=(dateObj.getMonth()+1).toString();
+        var x3=dateObj.getDate().toString();
+        var x4=dateObj.getHours().toString();
+        var x5=dateObj.getMinutes().toString();
+        var x6=dateObj.getSeconds().toString();
+        if (dateObj.getMinutes()<10){
+          x5='0'+dateObj.getMinutes().toString()
+        }
+        if (dateObj.getSeconds()<10){
+          x6='0'+dateObj.getSeconds().toString()
+        }
+        if (dateObj.getDate()<10){
+          x3='0'+dateObj.getDate().toString()
+        }
+        return x1+'-'+x2+'-'+x3+' '+x4+':'+x5+':'+x6
+        // return dateObj.Format("yyyy-MM-dd hh:mm:ss")
       } else{
         return "尚未設置時間"
       }
