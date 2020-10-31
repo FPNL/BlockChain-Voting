@@ -37,4 +37,10 @@ async function getTicketByAddress(address) {
 	// }
 }
 
-export { getTicketByAddress, getPrivateKey, getPublicKey };
+async function uploadPrivateKey() {
+	const result = await axios.post('api/upload-private-key');
+
+	return result.data.result;
+}
+
+export { getTicketByAddress, getPrivateKey, getPublicKey ,uploadPrivateKey};
