@@ -93,7 +93,8 @@
 import { mapGetters } from 'vuex'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import axios from 'axios'
+// import axios from 'axios'
+import jsencrypt from 'jsencrypt'
 // const capitalize = ws => ws[0].toUpperCase() + ws.slice(1).toLowerCase()
 
 // const precisionRound = (number, precision) => {
@@ -137,17 +138,37 @@ export default {
     // }
   },
   methods: {
+    encryptedData(publicKey, data) {
+          // 新建JSEncrypt对象
+          let encryptor = new jsencrypt();
+          // 设置公钥
+          encryptor.setPublicKey(publicKey);
+          // 加密数据
+          return encryptor.encrypt(data);
+        },
+      decryptData(privateKey,data){
+          // 新建JSEncrypt对象
+          let decrypt= new jsencrypt();
+          // 设置私钥
+          decrypt.setPrivateKey(privateKey);
+          // 解密数据
+          return decrypt.decrypt(data);
+        },
     submit() {
+      var x  = this.encryptedData('MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCYQBRFj+2Ryl6kkjLy+tZJT3YsaenURtPUexuWlY595LnQTNunSBtwNcJ7gLZgbkb4Bf2IIkCYgya6t+B9LjdPJ7NBGCIc7TQmTpKjcFucsA+tVuOesaYFBVF/HrL+1lNEY14oq+r7+l/BgUuVUBDUE4r7nfgPjMijSfLNLpP8+wIDAQAB','1234')
+      console.log(x)
+      var y = this.decryptData('MIICXQIBAAKBgQCYQBRFj+2Ryl6kkjLy+tZJT3YsaenURtPUexuWlY595LnQTNunSBtwNcJ7gLZgbkb4Bf2IIkCYgya6t+B9LjdPJ7NBGCIc7TQmTpKjcFucsA+tVuOesaYFBVF/HrL+1lNEY14oq+r7+l/BgUuVUBDUE4r7nfgPjMijSfLNLpP8+wIDAQABAoGAWq0PZb6qx0G3zFwmbABoz5C72Qfbc8obL1mCvNSl4OTwpdagm6iebt4VzmiCNjx3mBA5R3Le9fZmgp4w3V1BIryfwgQo/rZR7z15PtTJYALTXanz/+yhCn1zg/GRqpYaeo+XchohbYHKWWMen7Oebt6w828CUb6XXZc8NgQwCYECQQDr++lmISSxYmUqIfJQGPmtHPdlCYWhitfi16rv6kkrtE1GSH3v48otO/Y72KFfb7ZxBdfp50HbGTjIrVcLwKhDAkEApSn/d8uJXppB6DOkLcvQUV5FQduAlOabfQ1CfkqY94+WWIUMlIw1MNVUtMoxDXKPCna/sj5yfuMfsTeFxPhI6QJBAOg9PcCd44+S5z6ks+Tx/13IAQz1ZwbJLpd3aim8Z5BUXCxMEWyxv/nuZfEVzBKxTVpDxu7SAXTPiJuuQ9k0HCMCQQCC9JDNcEGEE/Ur4j5L3W1YBtINDLif11Tzyx6sugMdTukbWKsH4T+Pb6aRDjvkeK+30T3fWyo3N2h6gBZ9fYt5AkBf/5UplyPutgAo0V3aWLM0nF5UqUXDuSyXz7qR1WKA+QE6IdU6NiKsBBxqS93Li0XeNt69HS0YQsGmuusxChQ9','D3aHZcuQb5swKHPf8Znc1CIXzbCkpoMipn9oaj6Qv/OJfr2C4tGv1HCfYhtpiyEfAtp+EBUMUZiZfN11olBOjVSHsJk7ylsuRrbO7gLxkYS0TzvyrNStRabzSy3D0iKkuFW6ECRL8slh/cUpCIzUCc4XhIn56V7VTfDp0vsvXK8=')
+      console.log(y)
       // alert(1)
-      axios.get('http://192.168.255.20:59487/api/vote?address=123')
-      .then(function (response) {
-        // eslint-disable-next-line no-console
-        console.log(response);
-      })
-      .catch(function (error) {
-        // eslint-disable-next-line no-console
-        console.log(error);
-    });
+    //   axios.get('http://192.168.255.20:59487/api/vote?address=123')
+    //   .then(function (response) {
+    //     // eslint-disable-next-line no-console
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     // eslint-disable-next-line no-console
+    //     console.log(error);
+    // });
 
       // //发送get请求
       // this.$http.get('192.168.255.20:59487/api/vote',{address:123}).then(function(res){
