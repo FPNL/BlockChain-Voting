@@ -1,13 +1,61 @@
 <template>
+
   <div v-if="isDrizzleInitialized" id="app">
     <header>
-      <span>Hello, {{ activeAccount }}</span>
-      <span>您的餘額: {{ convertedBalance }} {{ units }}</span>
-<!--      <drizzle-account units="Ether" :precision="5" />-->
+      <h1>投票系統</h1><br>
     </header>
+    <div>
+  <!-- 取票 -->
+  <b-tabs content-class="mt-3">
+    <b-tab title="取票" active>
+      <!-- <drizzle-contract-form id="AddressInput"
+        contractName="VoteProvider"
+        method="giveVote"
+        :placeholders="['請輸入Address']"/> -->
+        <input v-model="address" placeholder="請輸入Address"><br>
+        <button type="submit" style="margin:10px" @click="submit">送出</button>
 
-    <main>
-      候選名單
+
+      </b-tab>
+<!--
+    <b-tab title="投票囉">
+      <input v-model="address" placeholder="請輸入Address">
+      <div style="margin:20px"></div>
+
+        <button  @click="chose1()" :class="{active : show1}">1 號</button>
+        <span style="margin-right:10px"></span>
+        <button  @click="chose2()" :class="{active : show2}">2 號</button>
+        <button style="margin:20px ;background-color: #97CBFF" @click="choice">確認投票</button>
+    </b-tab>
+
+    <b-tab title="投票結果" >
+      <div class="result">
+        <span>1號</span><br><br><br>
+        <span class="ticket">200票</span>
+      </div>
+      <div class="result">
+        <span>2號</span><br><br><br>
+        <span class="ticket">110票</span>
+        </div>
+    </b-tab> -->
+  </b-tabs>
+</div>
+
+      <!-- <span>Hello, {{ activeAccount }}</span> -->
+      <!-- <span>您的餘額: {{ convertedBalance }} {{ units }}</span> -->
+<!--      <drizzle-account units="Ether" :precision="5" />-->
+
+
+    <!-- <main> -->
+      <!-- <router-link  to="/" >回到首頁</router-link><br> -->
+
+    <!-- <router-link  to="/getVote" style="margin-top:50px">取票</router-link><br>
+
+    <router-link  to="/Vote" class="ctab">投票去</router-link><br>
+
+    <router-link  to="/VoteResult" >投票結果</router-link> -->
+    <!-- <router-view></router-view> -->
+      <!-- 候選名單
       <div class="flex-container">
         <drizzle-contract contractName="VoteCollection" method="getCandidates"
             label="候選名單6565"
@@ -17,8 +65,8 @@
 
       <div class="flex-container">
         <drizzle-contract contractName="VoteCollection" method="votingTime" />
-      </div>
-      設置時間
+      </div> -->
+      <!-- 設置時間
       <drizzle-contract-form
           contractName="VoteCollection"
           method="setTime"
@@ -30,9 +78,9 @@
           contractName="VoteCollection"
           method="introduceCandidate"
           :placeholders="['請介紹項目']"
-      />
+      /> -->
 
-    </main>
+    <!-- </main> -->
   </div>
 
   <div v-else>Loading...</div>
@@ -43,12 +91,15 @@
 // import SimpleStorage from './SimpleStorage'
 // import ComplexStorage from './ComplexStorage'
 import { mapGetters } from 'vuex'
-const capitalize = ws => ws[0].toUpperCase() + ws.slice(1).toLowerCase()
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import axios from 'axios'
+// const capitalize = ws => ws[0].toUpperCase() + ws.slice(1).toLowerCase()
 
-const precisionRound = (number, precision) => {
-  const factor = Math.pow(10, precision)
-  return Math.round(number * factor) / factor
-}
+// const precisionRound = (number, precision) => {
+//   const factor = Math.pow(10, precision)
+//   return Math.round(number * factor) / factor
+// }
 
 export default {
   name: 'app',
@@ -56,39 +107,56 @@ export default {
   data() {
     return {
       units: 'Ether', //Wei
-      precision: 5
+      precision: 5,
+      address:""
     }
   },
   computed: {
     ...mapGetters('accounts', ['activeAccount', 'activeBalance']),
     ...mapGetters('drizzle', ['drizzleInstance', 'isDrizzleInitialized']),
-    ...mapGetters('contracts', ['getContractData']),
-    getCandidates() {
-      return this.getContractData({
-        contract: 'VoteCollection',
-        method: 'getCandidates'
-      })
-    },
-    votingTime() {
-      return this.getContractData({
-        contract: 'VoteCollection',
-        method: 'votingTime'
-      })
-    },
-    convertedBalance() {
-      const wei = this.activeBalance
-      const units = capitalize(this.units)
-      return precisionRound(
-          this.drizzleInstance.web3.utils.fromWei(wei, units),
-          this.precision
-      )
-    }
+    ...mapGetters('contracts', ['getContractData'])
+    // getCandidates() {
+    //   return this.getContractData({
+    //     contract: 'VoteCollection',
+    //     method: 'getCandidates'
+    //   })
+    // },
+    // votingTime() {
+    //   return this.getContractData({
+    //     contract: 'VoteCollection',
+    //     method: 'votingTime'
+    //   })
+    // },
+    // convertedBalance() {
+    //   const wei = this.activeBalance
+    //   const units = capitalize(this.units)
+    //   return precisionRound(
+    //       this.drizzleInstance.web3.utils.fromWei(wei, units),
+    //       this.precision
+    //   )
+    // }
   },
   methods: {
-    onClick() {
-      // eslint-disable-next-line no-console
-      console.log(this.drizzleInstance.methods)
-    }
+    submit() {
+      // alert(1)
+      axios.get('http://192.168.255.20:59487/api/vote?address=123')
+      .then(function (response) {
+        // eslint-disable-next-line no-console
+        console.log(response);
+      })
+      .catch(function (error) {
+        // eslint-disable-next-line no-console
+        console.log(error);
+    });
+
+      // //发送get请求
+      // this.$http.get('192.168.255.20:59487/api/vote',{address:123}).then(function(res){
+      //     document.write(res.body);
+      //     alert(res)
+      //   },function(){
+      //     // console.log('请求失败处理');
+      //   });
+    },
   }
 }
 </script>
@@ -105,5 +173,27 @@ main {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+tab {
+  margin-top:50px
+}
+
+.result{
+    width:200px;
+    height:200px;
+    background:#ccc;
+    margin-left: 100px;
+    overflow: auto;
+    display:inline-block
+}
+.ticket{
+    font-size: 50px;
+    margin: 30px;
+    vertical-align:bottom
+}
+
+#AddressInput input{
+    margin: 20px;
 }
 </style>
